@@ -1,5 +1,95 @@
-# Ignore Gradle project-specific cache directory
-.gradle
+# Gradle build system
+.gradle/
+build/
+out/
+bin/
+!gradle/wrapper/gradle-wrapper.jar
 
-# Ignore Gradle build output directory
-build
+# Gradle configuration files (usually local)
+gradle.properties
+.local-execution-history/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+*.iws
+
+# Compiled class files
+*.class
+*.jar
+*.war
+*.ear
+
+# Kotlin build outputs
+*.ktsbuild
+.kotlin/
+kotlin-js-store/
+
+# Log files
+*.log
+logs/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor and IDE files
+*.swp
+*.swo
+*~
+.vscode/
+.idea_modules/
+
+# Git files (if auto-generated)
+.gitattributes
+
+# Local configuration files
+local.properties
+.env
+.env.local
+*.env
+
+# Generated files by build tools
+/release/
+/dist/
+/target/
+
+# MacOS
+.AppleDouble
+.LSOverride
+
+# Windows
+[Tt]humbs.db
+$RECYCLE.BIN/
+Desktop.ini
+
+# Linux
+.directory
+
+# Coverage reports
+.coverage/
+coverage/
+
+# Dependency directories
+**/lib/
+**/libs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+
+# Build scan files
+build-scan-data/
