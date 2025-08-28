@@ -4,21 +4,51 @@
 package org.example
 
 fun main() {
-    val member1= Member("M1", "S", "s")
-    member1.setName("Smith")
-    member1.setEmail("smith.com")
-    member1.setEmail("smith@gmail.com")
+    val smith= Member("M1", "S", "s")
+    smith.setName("Smith")
+    smith.setEmail("smith.com")
+    smith.setEmail("smith@gmail.com")
 
-    val book1 = Book("B1", "Harry Potter", "JK", "1111-222", 122)
-    member1.borrowItem(book1)
+    val john = Member("M2", "John", "john@gmail.com")
 
-    val member2 = Member("M2", "John", "john@gmail.com")
-    member2.borrowItem(book1)
+    val library = Library()
+// Add sample data
+    library.addItem(Book("B1", "The Kotlin Guide", "John Doe", "978-1234567890", 300))
+    library.addItem(Book("B2", "Harry Potter", "JK", "1111-222", 122))
+    library.addItem(DVD("D1", "Kotlin Tutorial", "Jane Smith", 120, "Educational"))
+   library.addItem(Magazine("Z1", "Times Magazine", 25, "NY-Times"))
 
-    member2.returnItem(book1)
-    member1.returnItem(book1)
-    member2.borrowItem(book1)
-    member1.totalLateFees(15)
-    member2.totalLateFees(15)
+// Register member
+    library.registerMember(Member("M3", "Alice Johnson", "alice@email.com"))
+    library.registerMember(smith)
+    library.registerMember(john)
+
+    val libraryStats = library.getLibraryStatistics()
+    println("Library Stats: $libraryStats")
+
+// Demonstrate borrowing
+    library.borrowItem("M1", "B1")
+    library.borrowItem("M2", "B1")
+    library.borrowItem("M2", "B2")
+    library.borrowItem("M2", "D1")
+    library.borrowItem("M3", "Z1")
+
+//Demostrate returning
+    library.returningItem("M1", "B2")
+    library.returningItem("M1", "B1")
+
+    smith.totalLateFees(5)
+    john.totalLateFees(5)
+// Show functional programming
+    val availableBooks = library.findBooksByAuthor("John Doe")
+        .filter { it.isAvailable }
+//        .map { it.getFormattedInfo() }
+    println("Available books by John Doe:")
+    availableBooks.forEach { book ->
+        println(book.title)
+    }
+//// Demonstrate recursion
+    val compoundFee = calculateCompoundLateFee(5.0, 7)
+    println("Compound late fee for 7 days: $$compoundFee")
 
 }

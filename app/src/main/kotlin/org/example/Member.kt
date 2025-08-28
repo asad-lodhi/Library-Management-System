@@ -51,14 +51,14 @@ class Member(
 
     fun totalLateFees(daysLate: Int) {
         if(borrowedItems.isEmpty()) {
-            println("no items borrowed")
+            println("$name borrowed no items")
         }
         else {
             var total = 0.0
             borrowedItems.forEach { item ->
                 total += item.calculateLateFee(daysLate)
             }
-            println("Total Late Fees = $$total")
+            println("$name Total Late Fees = $$total")
         }
     }
 }
