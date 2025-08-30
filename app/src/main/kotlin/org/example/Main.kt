@@ -51,4 +51,163 @@ fun main() {
     val compoundFee = calculateCompoundLateFee(5.0, 7)
     println("Compound late fee for 7 days: $$compoundFee")
 
+//    Library Console Application
+    var selection: String
+    while(true) {
+        println("----------Library Management System----------")
+        println("1. Add new library items")
+        println("2. Register new members")
+        println("3. Borrow Items")
+        println("4. Return Items")
+        println("X. Exit")
+        print("Select Option:")
+
+        selection = readln()
+        when (selection) {
+            "1" -> {
+                val itemId: String
+                val itemName: String
+                println("Select Item Type")
+                println("1. Book")
+                println("2. DVD")
+                println("3. Magazine")
+                print("Item Type:")
+                var entry = readln()
+
+                when (entry) {
+                    "1" -> {
+                        val author: String
+                        val isbn: String
+                        val pages: Int
+
+                        print("Item ID:")
+                        itemId = readln()
+                        print("Item Name:")
+                        itemName = readln()
+                        print("Author:")
+                        author = readln()
+                        print("ISBN:")
+                        isbn = readln()
+                        print("No. of pages:")
+                        pages = readln().toInt()
+
+                        library.addItem(
+                            Book(
+                                id = itemId,
+                                title = itemName,
+                                author = author,
+                                isbn = isbn,
+                                pages = pages
+                            )
+                        )
+                    }
+
+                    "2" -> {
+                        val director: String
+                        val duration: Int
+                        val genre: String
+
+                        print("Item ID:")
+                        itemId = readln()
+                        print("Item Name:")
+                        itemName = readln()
+                        print("Director:")
+                        director = readln()
+                        print("Duration:")
+                        duration = readln().toInt()
+                        print("Genre:")
+                        genre = readln()
+
+                        library.addItem(
+                            DVD(
+                                id = itemId,
+                                title = itemName,
+                                director = director,
+                                duration = duration,
+                                genre = genre
+                            )
+                        )
+                    }
+
+                    "3" -> {
+                        val issueNumber: Int
+                        val publisher: String
+
+                        print("Item ID:")
+                        itemId = readln()
+                        print("Item Name:")
+                        itemName = readln()
+                        print("Issue Number:")
+                        issueNumber = readln().toInt()
+                        print("Publisher:")
+                        publisher = readln()
+
+                        library.addItem(
+                            Magazine(
+                                id = itemId,
+                                title = itemName,
+                                issueNumber = issueNumber,
+                                publisher = publisher
+                            )
+                        )
+                    }
+
+                    else -> println("error")
+                }
+            }
+
+            "2" -> {
+                val memberId: String
+                val memberName: String
+                val memberEmail: String
+                print("Member ID:")
+                memberId = readln()
+                print("Member Name:")
+                memberName = readln()
+                print("Member Email:")
+                memberEmail = readln()
+
+                library.registerMember(
+                    Member(
+                        memberId = memberId,
+                        name = memberName,
+                        email = memberEmail
+                    )
+                )
+            }
+
+            "3" -> {
+                val memberId: String
+                val itemId: String
+                print("Member ID:")
+                memberId = readln()
+                print("Item ID:")
+                itemId = readln()
+
+                library.borrowItem(memberId, itemId)
+            }
+
+            "4" -> {
+                val memberId: String
+                val itemId: String
+                print("Member ID:")
+                memberId = readln()
+                print("Item ID:")
+                itemId = readln()
+
+                library.returningItem(memberId, itemId)
+            }
+
+            "X"  -> {
+                return
+            }
+
+            "x" -> {
+                return
+            }
+
+            else -> println("error")
+        }
+    }
+
 }

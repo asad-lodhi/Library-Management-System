@@ -20,10 +20,12 @@ class Library {
     fun addItem(item: LibraryItem) {
         itemsById[item.id] = item
         itemsByCategory[item.getItemType()]?.add(item)
+        println("New ${item.getItemType()} ${item.title} Added with id:${item.id}")
     }
     //library.registerMember(Member("M001", "Alice Johnson", "alice@email.com"))
     fun registerMember(member: Member) {
         members[member.getMemberId()] = member
+        println("New member: ${member.getMemberId()} ${member.getName()} ${member.getEmail()} Added")
     }
     //borrowItem("M001", "B001")
     fun borrowItem(memberId: String, itemId: String) {

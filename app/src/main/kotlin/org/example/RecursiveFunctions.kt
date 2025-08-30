@@ -7,7 +7,7 @@ fun calculateCompoundLateFee(baseFee: Double, days: Int): Double {
 
     // Recursive Function
     var fee = baseFee
-    if(days != 0) {
+    if(days > 0) {
         fee = fee + baseFee * 1.05
         calculateCompoundLateFee(baseFee = fee, days = days - 1 )
     }
